@@ -166,9 +166,7 @@ getCurrentURL = doSessCommand methodGet "/url" Null
 
 -- |Opens a new page by the given URL.
 openPage :: WebDriver wd => String -> wd ()
-openPage url
-  | isURI url = noReturn . doSessCommand methodPost "/url" . single "url" $ url
-  | otherwise = throwIO . InvalidURL $ url
+openPage url = noReturn . doSessCommand methodPost "/url" . single "url" $ url
 
 -- |Navigate forward in the browser history.
 forward :: WebDriver wd => wd ()
